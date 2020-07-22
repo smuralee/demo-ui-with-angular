@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { AppService } from './app-service';
-import { AppInfo } from '../_models';
-import { Router } from '@angular/router';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {AppService} from './app-service';
+import {AppInfo} from '../_models';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +15,14 @@ export class AppInfoService extends AppService {
   }
 
   register(payload: AppInfo) {
-    this.http
-      .post(this.getEndpoint(this.resourceName), payload)
-      .subscribe((data) => this.router.navigate(['summary']));
+    return this.http.post(this.getEndpoint(this.resourceName), payload);
+    // return new Observable(this.waitTimer);
+  }
+
+  waitTimer(observer) {
+    setTimeout(() => {
+      observer.next('Done waiting for 10 sec');
+      observer.complete();
+    }, 10000);
   }
 }
