@@ -21,8 +21,8 @@ export class AppInfoService extends AppService {
 
   waitTimer(observer) {
     setTimeout(() => {
-      observer.next('Done waiting for 10 sec');
+      observer.next('Done waiting for 5 sec');
       observer.complete();
-    }, 10000);
+    }, 5000);
   }
 }
