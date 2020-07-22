@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AppService} from './app-service';
 import {AppInfo} from '../_models';
 import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,10 @@ export class AppInfoService extends AppService {
   }
 
   register(payload: AppInfo) {
-    return this.http.post(this.getEndpoint(this.resourceName), payload);
-    // return new Observable(this.waitTimer);
+    // FIXME: Uncomment the HTTP POST once API endpoint is available
+
+    // return this.http.post(this.getEndpoint(this.resourceName), payload);
+    return new Observable(this.waitTimer);
   }
 
   waitTimer(observer) {
